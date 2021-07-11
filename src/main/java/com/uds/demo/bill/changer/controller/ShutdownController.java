@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uds.demo.bill.changer.utils.CoinsQtyCache;
 
+/*
+ * Controlled to provide a way to shutdown in case we have exhausted.
+ *  In actual scenario we would have some kind authorization so that only authorized people can perform this task  
+ */
+
 @RestController
 public class ShutdownController {
 

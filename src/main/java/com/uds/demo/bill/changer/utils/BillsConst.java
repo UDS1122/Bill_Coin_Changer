@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public enum BillsConst {
-	//constant for the bill types and values
+	//constant for the bill types and values...if any new denominations can come then we have to add here
 	ONE("1",1),
 	TWO("2",2),
 	FIVE("5",5),
@@ -30,6 +30,6 @@ public enum BillsConst {
 				billValues.add(bill.billValue);
 			}
 		}
-		return Collections.unmodifiableList(billValues);
+		return Collections.unmodifiableList(billValues);//any caller should not be able to make any changes to list of available Bills
 	}
 }

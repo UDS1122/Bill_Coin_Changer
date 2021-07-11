@@ -7,7 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.uds.demo.bill.changer.utils.CoinsConst;
 import com.uds.demo.bill.changer.utils.CoinsQtyCache;
-
+/*
+ * This class is responsible for actually finding out the minimum coins to find change for the give bill
+ * as coins are in double and we are using DP and array to find out...hence multiplied by 100.
+ * If we will have integers then no need to multiply by 100.
+ * It does not make any impact on the actual outcome or anything as it does make any changes to original.
+ * This is synchronized to ensure only one thread is making changes.
+ */
 @Service
 public class BillChangeService {
 	
@@ -17,8 +23,8 @@ public class BillChangeService {
 		bill = bill * 100;
 		int[][] coinsUsed = new int[bill + 1][];
 		int[] change = new int[] {};
-		CoinsConst[] coins = new CoinsConst[cache.size()];//cache.keySet().toArray(new CoinsConst[cache.size()]);
-		Integer[] limits = new Integer[cache.size()];//cache.values().toArray(new Integer[cache.size()]);
+		CoinsConst[] coins = new CoinsConst[cache.size()];
+		Integer[] limits = new Integer[cache.size()];
 		int index=0;
 		for(Map.Entry<CoinsConst, Integer> map : cache.entrySet()) {
 			coins[index] = map.getKey();
@@ -59,7 +65,7 @@ public class BillChangeService {
             return "Sorry! Change is not possible with current available coins";
         }
         
-        change = coinsUsed[bill];//get the change from here...
+        change = coinsUsed[bill];
         
         final StringBuilder result = new StringBuilder("Total change coins : "+minCoins[bill]);
         

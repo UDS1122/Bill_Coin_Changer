@@ -16,6 +16,12 @@ import com.uds.demo.bill.changer.service.BillChangeService;
 import com.uds.demo.bill.changer.utils.BillsConst;
 import com.uds.demo.bill.changer.utils.CoinsQtyCache;
 
+/*
+ * Controlled responsible for providing the change for the given bill.
+ * If bill is not among supported bills then return with BAD_REQUEST
+ * If there are not enough coins to make minimum change then return with BAD_REQUEST
+ * Finally call service which will return the change coins for the given bill
+ */
 @RestController
 @RequestMapping(path="/bill")
 public class BillChangeController {
