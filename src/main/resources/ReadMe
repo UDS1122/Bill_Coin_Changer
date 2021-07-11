@@ -1,0 +1,18 @@
+Bill Changer
+1.	Ask is to build a demo application that will allow user to change bills into minimum available coins.
+2.	Zip contains following :
+a.	bill.changer-0.0.1-SNAPSHOT: run the application from command line and test it through POSTMAN. https://www.postman.com/downloads/
+b.	Source Code 
+3.	JAR File : Run using command 
+
+java -jar bill.changer-0.0.1-SNAPSHOT.jar com.uds.demo.bill.changer.Application
+
+If default port 8080 is already in use then either kill running application or start this service on different port.
+
+java -jar -Dserver.port=8181 bill.changer-0.0.1-SNAPSHOT.jar com.uds.demo.bill.changer.Application 
+
+4.	Details about Endpoints : Once application is up and running then use following endpoints to access and test it on POSTMAN or Browser
+a.	http://localhost:8080/bill/change/{bill} : To get the change for the request {bill} i.e. 1, 2, 5, 10 etc.
+b.	http://localhost:8080/coins/all : Shows current status of different coins and their respective quantites
+c.	http://localhost:8080/coins/update/{bill} : Once we have exhausted the coins then we may want to re-fill so that we can continue to provide change for given bills
+d.	http://localhost:8080/shutdown : Once all coins have exhausted then either we may re-fill or we can shut down the application.
